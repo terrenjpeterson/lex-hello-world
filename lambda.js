@@ -102,48 +102,31 @@ function getHelp(intentRequest, callback) {
         
 }
 
-// this function is what builds the response to a request for who was the race winner
-
-function getRaceWinner(intentRequest, callback) {
-    const sessionAttributes = intentRequest.sessionAttributes || {};
-
-    var counterResponse = 'Here is who won';
-
-    callback(close(sessionAttributes, 'Fulfilled',
-        { contentType: 'PlainText', content: counterResponse }));
-        
-}
-
 // this function is what validates what information has been provided
 
-function validateRaceYear(intentRequest, callback) {
+function validateSomething(intentRequest, callback) {
     const sessionAttributes = intentRequest.sessionAttributes || {};
     const slots = intentRequest.currentIntent.slots;
 
-    const raceYear = intentRequest.currentIntent.slots.Year;
+    //const slotData = intentRequest.currentIntent.slots.xxx;
+
+    var passedValidation = false;
 
     // check the race year that was provided to see 
-    if (raceYear === '2016' || raceYear === '2015') {
+    if (passedValidation) {
         
         callback(delegate(sessionAttributes, intentRequest.currentIntent.slots));
 
     } else {
 
         // format error message to be returned
-        var errorMessage = 'No Year Provided';
-        const errorSlot = 'Year';
-        
-        if (raceYear && raceYear != 'race') {
-            errorMessage = 'Invalid Year';
-        }
+        var errorMessage = 'No Data Provided';
+        //const errorSlot = 'TBD';
         
         // call helper function to format JSON for error response
         const validationResult = buildValidationResult(false, errorSlot, errorMessage);
         console.log("Validation Result: " + JSON.stringify(validationResult));
 
-        //console.log("Invalid race year. Pass back failed validation");
-        //slots[`${validationResult.violatedSlot}`] = null;
-            
         callback(elicitSlot(sessionAttributes, intentRequest.currentIntent.name,
             slots, validationResult.violatedSlot, validationResult.message));
 
@@ -177,13 +160,6 @@ function dispatch(intentRequest, callback) {
     } else if (intentName === 'Help') {
         console.log("user requested help.");
         return getHelp(intentRequest, callback);
-    } else if (intentName === 'raceWinner') {
-        console.log("determine race winner.");
-        if (intentSource === 'DialogCodeHook') {
-            return validateRaceYear(intentRequest, callback);
-        } else {
-            return getRaceWinner(intentRequest, callback);
-        }
     }
     
     throw new Error(`Intent with name ${intentName} not supported`);
