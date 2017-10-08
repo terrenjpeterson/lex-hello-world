@@ -1,0 +1,19 @@
+{
+    "messageVersion": "1.0",
+    "invocationSource": "FulfillmentCodeHook",
+    "userId": "xxxx",
+    "sessionAttributes": {},
+    "bot": {
+        "name": "HelloWorld",
+        "alias": null,
+        "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "currentIntent": {
+        "name": "Welcome",
+        "slots": {},
+        "slotDetails": {},
+        "confirmationStatus": "None"
+    },
+    "inputTranscript": "how are you doing?"
+}
