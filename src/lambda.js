@@ -112,7 +112,7 @@ function validateSomething(intentRequest, callback) {
 
     var passedValidation = false;
 
-    // check the race year that was provided to see 
+    // check the data passed validation then provide a valid callback
     if (passedValidation) {
         
         callback(delegate(sessionAttributes, intentRequest.currentIntent.slots));
@@ -181,7 +181,7 @@ exports.handler = (event, context, callback) => {
         console.log(`event.bot.name=${event.bot.name}`);
 
         // remember to enter your bot name here
-        if (event.bot.name != 'RaceBot') {
+        if (event.bot.name != 'HelloWorld') {
              console.log('Invalid Bot Name');
         }
         dispatch(event, (response) => loggingCallback(response, callback));
