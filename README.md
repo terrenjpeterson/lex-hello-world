@@ -12,12 +12,16 @@ Code base for basic Hello World chatbot based on AWS Lex service and AWS Lambda
 
 ## Get started with Lex
 
-Using the AWS console, create your first Lex bot and give it a unique name.
+Using the AWS console, create your first Lex bot and give it a name. For example, HelloWorld.
+
+Then create your first intent. Just call it something simple like 'Hello'.
+
+Creating an intent involves establishing sample utterances. Pick something simple like 'Hello' or 'Hi'.
 
 ## Get started with Lambda
 
 1) Create a new blank lambda function.
-2) Copy the code in the /src folder into the lambda function.
+2) Copy the [code](https://github.com/terrenjpeterson/lex-hello-world/blob/master/src/lambda.js) in the /src folder into the lambda function.
 3) Save.
 
 ## Start testing your bot
